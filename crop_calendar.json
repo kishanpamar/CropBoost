@@ -1,0 +1,35 @@
+[
+  {
+    "season": "Kharif",
+    "months": "Jun–Oct",
+    "crops": [
+      "Rice",
+      "Maize",
+      "Cotton",
+      "Soybean",
+      "Groundnut",
+      "Millets"
+    ]
+  },
+  {
+    "season": "Rabi",
+    "months": "Oct–Mar",
+    "crops": [
+      "Wheat",
+      "Barley",
+      "Mustard",
+      "Gram",
+      "Pea"
+    ]
+  },
+  {
+    "season": "Zaid",
+    "months": "Mar–Jun",
+    "crops": [
+      "Cucumber",
+      "Pumpkin",
+      "Watermelon",
+      "Fodder Maize"
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Organic Farming Basics (Hindi)",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=0c4dXG1S8kM"
+  },
+  {
+    "title": "Drip Irrigation Setup",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=Y2bKy0m6Q6U"
+  },
+  {
+    "title": "IPM Manuals (NIPHM)",
+    "type": "pdf",
+    "link": "https://niphm.gov.in/IPMPackages.html"
+  },
+  {
+    "title": "KVK Trainings",
+    "type": "web",
+    "link": "https://kvk.icar.gov.in/"
+  },
+  {
+    "title": "Fertilizer Use Efficiency (ICAR)",
+    "type": "pdf",
+    "link": "https://agricoop.nic.in/en/whatsnew/handbook-fertilizer-use-efficiency"
+  },
+  {
+    "title": "Rainwater Harvesting for Farms",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=9p8R6HfT8B4"
+  }
+]

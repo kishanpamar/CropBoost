@@ -1,0 +1,13 @@
+state,district,market,commodity,variety,date,min,max,modal,unit
+Gujarat,Rajkot,Rajkot,Groundnut,Bold,2025-08-15,5500,6500,6050,₹/quintal
+Gujarat,Surat,Bardoli,Cotton,Shankar-6,2025-08-16,6200,7500,6900,₹/quintal
+Maharashtra,Pune,Pimpri,Tomato,Hybrid,2025-08-14,600,1200,900,₹/quintal
+Maharashtra,Nashik,Lasalgaon,Onion,Red,2025-08-13,1300,2100,1750,₹/quintal
+Punjab,Ludhiana,Ludhiana,Paddy (Dhan),Basmati 1121,2025-08-11,2800,3600,3200,₹/quintal
+Karnataka,Kolar,Kolar,Tomato,Hybrid,2025-08-16,700,1400,980,₹/quintal
+Telangana,Warangal,Enumamula,Cotton,American,2025-08-15,6000,7400,6700,₹/quintal
+Andhra Pradesh,Guntur,Guntur,Chilli,Teja,2025-08-16,14000,18500,16200,₹/quintal
+Rajasthan,Kota,Kota,Soyabean,Yellow,2025-08-14,3800,4700,4300,₹/quintal
+Madhya Pradesh,Indore,Indore,Soyabean,Yellow,2025-08-15,3900,4800,4400,₹/quintal
+Uttar Pradesh,Varanasi,Varanasi,Banana,Robusta,2025-08-10,800,1200,1000,₹/quintal
+Haryana,Karnal,Karnal,Basmati Rice (Paddy),1121,2025-08-14,3000,3800,3400,₹/quintal

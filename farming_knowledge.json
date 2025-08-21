@@ -1,0 +1,16 @@
+{
+  "soil": [
+    "Get a Soil Health Card; apply fertilizers as per recommendations.",
+    "Add farmyard manure/compost 5–10 t/ha to improve organic matter.",
+    "Avoid over-tillage; use mulching to conserve moisture."
+  ],
+  "water": [
+    "Adopt drip/sprinkler where feasible; schedule irrigation early morning/evening.",
+    "Harvest rainwater; maintain field drainage to avoid waterlogging."
+  ],
+  "ipm": [
+    "Use pheromone traps and light traps; encourage natural enemies.",
+    "Select resistant/tolerant varieties; rotate crops to break pest cycles.",
+    "Use need-based, label-recommended pesticides with proper PPE."
+  ]
+}

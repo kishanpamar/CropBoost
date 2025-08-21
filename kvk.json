@@ -1,0 +1,23 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Rajkot",
+    "name": "KVK, Rajkot",
+    "link": "https://kvk.icar.gov.in/",
+    "phone": "0281-xxxxxxx"
+  },
+  {
+    "state": "Maharashtra",
+    "district": "Pune",
+    "name": "KVK, Baramati",
+    "link": "https://kvkbaramati.com/",
+    "phone": "02112-xxxxxx"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "district": "Indore",
+    "name": "KVK, Indore",
+    "link": "https://kvk.icar.gov.in/",
+    "phone": "0731-xxxxxxx"
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "Rajkot": [
+    {
+      "date": "2025-08-21",
+      "tmax": 32,
+      "tmin": 25,
+      "rain_mm": 12,
+      "desc": "Moderate rain"
+    },
+    {
+      "date": "2025-08-22",
+      "tmax": 31,
+      "tmin": 25,
+      "rain_mm": 5,
+      "desc": "Cloudy"
+    },
+    {
+      "date": "2025-08-23",
+      "tmax": 32,
+      "tmin": 24,
+      "rain_mm": 7,
+      "desc": "Light rain"
+    }
+  ],
+  "Pune": [
+    {
+      "date": "2025-08-21",
+      "tmax": 27,
+      "tmin": 21,
+      "rain_mm": 16,
+      "desc": "Heavy rain"
+    },
+    {
+      "date": "2025-08-22",
+      "tmax": 28,
+      "tmin": 22,
+      "rain_mm": 6,
+      "desc": "Cloudy"
+    },
+    {
+      "date": "2025-08-23",
+      "tmax": 28,
+      "tmin": 22,
+      "rain_mm": 8,
+      "desc": "Showers"
+    }
+  ],
+  "Indore": [
+    {
+      "date": "2025-08-21",
+      "tmax": 31,
+      "tmin": 24,
+      "rain_mm": 2,
+      "desc": "Partly cloudy"
+    },
+    {
+      "date": "2025-08-22",
+      "tmax": 31,
+      "tmin": 23,
+      "rain_mm": 6,
+      "desc": "Light rain"
+    },
+    {
+      "date": "2025-08-23",
+      "tmax": 32,
+      "tmin": 24,
+      "rain_mm": 3,
+      "desc": "Cloudy"
+    }
+  ]
+}

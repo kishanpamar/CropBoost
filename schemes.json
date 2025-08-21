@@ -1,0 +1,32 @@
+[
+  {
+    "name": "PM-KISAN",
+    "link": "https://pmkisan.gov.in/",
+    "desc": "Income support to farmer families (₹6,000/year)."
+  },
+  {
+    "name": "PMFBY Crop Insurance",
+    "link": "https://pmfby.gov.in/",
+    "desc": "Insurance against crop failure due to natural calamities and pests."
+  },
+  {
+    "name": "Soil Health Card",
+    "link": "https://soilhealth.dac.gov.in/",
+    "desc": "Soil testing and fertilizer recommendations."
+  },
+  {
+    "name": "eNAM National Market",
+    "link": "https://enam.gov.in/",
+    "desc": "Transparent online trading platform for agri commodities."
+  },
+  {
+    "name": "mKisan Portal",
+    "link": "https://mkisan.gov.in/",
+    "desc": "Advisories and SMS services."
+  },
+  {
+    "name": "Farmers' Portal (GoI)",
+    "link": "https://farmer.gov.in/",
+    "desc": "Official agriculture information."
+  }
+]

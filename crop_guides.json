@@ -1,0 +1,32 @@
+[
+  {
+    "crop": "Wheat",
+    "stage": "Basal",
+    "advice": "Apply 50% N + full P and K as per soil test. Ensure good seedbed moisture."
+  },
+  {
+    "crop": "Wheat",
+    "stage": "Tillering",
+    "advice": "Apply 25% N, monitor rust; use resistant varieties."
+  },
+  {
+    "crop": "Rice (Paddy)",
+    "stage": "Transplanting",
+    "advice": "Use healthy seedlings, maintain 2-3 cm water depth for first 10 days."
+  },
+  {
+    "crop": "Rice (Paddy)",
+    "stage": "Panicle initiation",
+    "advice": "Top-dress N and maintain field moisture; monitor stem borer."
+  },
+  {
+    "crop": "Cotton",
+    "stage": "Vegetative",
+    "advice": "Set up pheromone traps, encourage natural enemies, avoid prophylactic sprays."
+  },
+  {
+    "crop": "Groundnut",
+    "stage": "Flowering",
+    "advice": "Gypsum @ 200-250 kg/ha; ensure uniform soil moisture."
+  }
+]
