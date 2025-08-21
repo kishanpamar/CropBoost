@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CropBoost</title>
+  <meta name="description" content="CropBoost helps Indian farmers with tools, multi-language content, and a training hub." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
+    .card{ @apply p-5 rounded-2xl border bg-white shadow-sm; }
+  </style>
+</head>
+<body class="bg-green-50 text-slate-800">
+  <header class="sticky top-0 z-40 bg-white/90 border-b">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
+      <div class="font-extrabold text-2xl text-green-700">🌱 <span data-i18n="title">CropBoost</span></div>
+      <nav class="ml-auto hidden md:flex gap-6 font-semibold text-sm">
+        <a href="#tools" class="hover:text-green-700" data-i18n="tools">Tools</a>
+        <a href="#mandi" class="hover:text-green-700" data-i18n="prices">Mandi Prices</a>
+        <a href="#weather" class="hover:text-green-700" data-i18n="weather">Weather</a>
+        <a href="#schemes" class="hover:text-green-700" data-i18n="schemes">Schemes & KVK</a>
+        <a href="#training" class="hover:text-green-700" data-i18n="training">Training Hub</a>
+        <a href="#guides" class="hover:text-green-700" data-i18n="guides">Crop Guides</a>
+        <a href="#calendar" class="hover:text-green-700" data-i18n="calendar">Crop Calendars</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4">
+    <section class="py-8">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-green-900" data-i18n="tagline">Grow More. Spend Less. Sustain the Soil.</h1>
+      <p class="mt-3 text-lg">• <a class="underline" href="https://farmer.gov.in/" target="_blank">farmers.gov.in</a> • <a class="underline" href="https://enam.gov.in/" target="_blank">eNAM</a> • <a class="underline" href="https://pmfby.gov.in/" target="_blank">PMFBY</a></p>
+      <div class="mt-5 flex flex-wrap gap-3 items-center">
+        <select id="lang" class="border rounded-xl p-2">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="gu">ગુજરાતી</option>
+          <option value="mr">मराठी</option>
+          <option value="bn">বাংলা</option>
+          <option value="pa">ਪੰਜਾਬੀ</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="ml">മലയാളം</option>
+          <option value="ur">اردو</option>
+          <option value="or">ଓଡ଼ିଆ</option>
+          <option value="ne">नेपाली</option>
+          <option value="as">অসমীয়া</option>
+        </select>
+        <button id="tts" class="px-4 py-2 rounded-2xl bg-green-600 text-white" data-i18n="read_aloud">Read Aloud</button>
+      </div>
+    </section>
+
+    <!-- Tools cards -->
+    <section id="tools" class="grid md:grid-cols-2 gap-6">
+      <div class="card">
+        <h3 class="font-semibold" data-i18n="seed_rate">Seed Rate Calculator</h3>
+        <div class="grid grid-cols-2 gap-3 text-lg mt-3">
+          <label>1000-seed wt (g)<input id="thousand" type="number" step="0.1" class="mt-1 w-full border rounded p-2"></label>
+          <label>Row spacing (cm)<input id="rowsp" type="number" step="0.1" class="mt-1 w-full border rounded p-2"></label>
+          <label>Plant spacing (cm)<input id="plantsp" type="number" step="0.1" class="mt-1 w-full border rounded p-2"></label>
+          <label>Germination (%)<input id="germ" type="number" step="1" class="mt-1 w-full border rounded p-2"></label>
+        </div>
+        <p class="mt-2 text-lg"><b data-i18n="result">Result</b>: <span id="seed_out">-</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="font-semibold" data-i18n="fert_calc">NPK Nutrient Calculator</h3>
+        <div class="grid grid-cols-3 gap-3 text-lg mt-3">
+          <label>N (kg/ha)<input id="tn" type="number" class="mt-1 w-full border rounded p-2"></label>
+          <label>P₂O₅ (kg/ha)<input id="tp" type="number" class="mt-1 w-full border rounded p-2"></label>
+          <label>K₂O (kg/ha)<input id="tk" type="number" class="mt-1 w-full border rounded p-2"></label>
+        </div>
+        <p class="mt-2 text-lg"><b data-i18n="result">Result</b>: <span id="fert_out">-</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="font-semibold" data-i18n="drip">Drip Water Need</h3>
+        <div class="grid grid-cols-3 gap-3 text-lg mt-3">
+          <label>Plants<input id="plants" type="number" class="mt-1 w-full border rounded p-2"></label>
+          <label>Emitter (L/h)<input id="lph" type="number" step="0.1" class="mt-1 w-full border rounded p-2"></label>
+          <label>Hours/day<input id="hours" type="number" step="0.1" class="mt-1 w-full border rounded p-2"></label>
+        </div>
+        <p class="mt-2 text-lg"><b data-i18n="result">Result</b>: <span id="drip_out">-</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="font-semibold" data-i18n="roi">Cost–Benefit (ROI)</h3>
+        <div class="grid grid-cols-2 gap-3 text-lg mt-3">
+          <label>Total cost (₹)<input id="cost" type="number" class="mt-1 w-full border rounded p-2"></label>
+          <label>Expected income (₹)<input id="income" type="number" class="mt-1 w-full border rounded p-2"></label>
+        </div>
+        <p class="mt-2 text-lg"><b>ROI</b>: <span id="roi_out">-</span></p>
+      </div>
+    </section>
+
+    <!-- Prices -->
+    <section id="mandi" class="py-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800"><span data-i18n="prices">Mandi Prices</span> (Snapshot)</h2>
+      <div class="mt-3 grid md:grid-cols-4 gap-3">
+        <input id="f_state" class="border rounded p-3 text-lg" placeholder="State e.g., Gujarat" data-i18n-placeholder="state">
+        <input id="f_commodity" class="border rounded p-3 text-lg" placeholder="Commodity e.g., Wheat" data-i18n-placeholder="commodity">
+        <input id="f_market" class="border rounded p-3 text-lg" placeholder="Market e.g., Rajkot" data-i18n-placeholder="market">
+        <button id="f_go" class="px-4 py-3 rounded bg-green-600 text-white text-lg" data-i18n="search">Search</button>
+      </div>
+      <div class="mt-4 overflow-x-auto">
+        <table class="min-w-full text-lg border bg-white rounded-2xl">
+          <thead class="bg-green-50">
+            <tr>
+              <th class="p-2 border">Date</th><th class="p-2 border">State</th><th class="p-2 border">Market</th>
+              <th class="p-2 border">Commodity</th><th class="p-2 border">Variety</th>
+              <th class="p-2 border">Min</th><th class="p-2 border">Max</th><th class="p-2 border">Modal</th>
+            </tr>
+          </thead>
+          <tbody id="mandi_tbody"></tbody>
+        </table>
+      </div>
+      <canvas id="priceChart" class="mt-6"></canvas>
+    </section>
+
+    <!-- Weather -->
+    <section id="weather" class="py-10 bg-white rounded-3xl border shadow-sm px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800" data-i18n="weather">Weather</h2>
+      <div class="mt-3 flex gap-3">
+        <select id="city" class="border rounded p-3 text-lg">
+          <option>Rajkot</option><option>Pune</option><option>Indore</option>
+        </select>
+        <button id="w_go" class="px-4 py-3 rounded bg-green-600 text-white text-lg">Load</button>
+      </div>
+      <div class="mt-4 grid md:grid-cols-3 gap-3" id="w_cards"></div>
+    </section>
+
+    <!-- Training Hub -->
+    <section id="training" class="py-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800" data-i18n="training">Training Hub</h2>
+      <ul id="train_list" class="mt-3 grid md:grid-cols-2 gap-3"></ul>
+    </section>
+
+    <!-- Schemes & KVK -->
+    <section id="schemes" class="py-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800" data-i18n="schemes">Schemes & KVK</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-4">
+        <div class="card">
+          <h3 class="font-semibold" data-i18n="gov_links">Government & Trusted Links</h3>
+          <ul id="scheme_list" class="list-disc pl-5 text-lg"></ul>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold" data-i18n="find_kvk">Find Your KVK</h3>
+          <div class="flex gap-2 mt-2">
+            <input id="kvk_state" class="border rounded p-3 flex-1 text-lg" placeholder="State e.g., Gujarat" data-i18n-placeholder="state">
+            <button id="kvk_go" class="px-3 py-2 rounded bg-green-600 text-white text-lg" data-i18n="search">Search</button>
+          </div>
+          <ul id="kvk_list" class="list-disc pl-5 text-lg mt-3"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crop Guides + Calendars + Knowledge -->
+    <section id="guides" class="py-10 bg-white rounded-3xl border shadow-sm px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-green-800" data-i18n="guides">Crop Guides</h2>
+      <div class="flex gap-2 mt-2">
+        <input id="g_crop" class="border rounded p-3 text-lg" placeholder="Crop e.g., Wheat">
+        <button id="g_go" class="px-3 py-2 rounded bg-green-600 text-white text-lg" data-i18n="search">Search</button>
+      </div>
+      <ul id="g_list" class="list-disc pl-5 text-lg mt-4"></ul>
+
+      <h3 class="text-xl font-semibold mt-8" data-i18n="calendar">Crop Calendars</h3>
+      <div id="cal_cards" class="grid md:grid-cols-3 gap-3 mt-3"></div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card">
+          <h3 class="font-semibold" data-i18n="soil_tips">Soil Tips</h3>
+          <ul id="soil_ul" class="list-disc pl-5 text-lg"></ul>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold" data-i18n="water_tips">Water Saving</h3>
+          <ul id="water_ul" class="list-disc pl-5 text-lg"></ul>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold" data-i18n="ipm_tips">Integrated Pest Management</h3>
+          <ul id="ipm_ul" class="list-disc pl-5 text-lg"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 border-t my-8">
+      <div class="text-lg text-slate-700">Kisan Call Center: 1800-180-1551 • ICAR • IMD • Soil Health • PMFBY • eNAM</div>
+    </footer>
+  </main>
+
+  <script>
+    // PWA
+    if ('serviceWorker' in navigator){ navigator.serviceWorker.register('/sw.js'); }
+
+    // i18n loader
+    async function loadLang(lang){
+      const res = await fetch(`/api/i18n?lang=${lang}`);
+      const dict = await res.json();
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+        const key = el.getAttribute("data-i18n-placeholder");
+        if(dict[key]) el.setAttribute("placeholder", dict[key]);
+      });
+    }
+    const langSel = document.getElementById("lang");
+    langSel.addEventListener("change", e=> loadLang(e.target.value));
+    loadLang(langSel.value);
+
+    // Voice read aloud
+    document.getElementById("tts").addEventListener("click", ()=>{
+      const txt = document.querySelector("[data-i18n='tagline']").textContent;
+      if('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance(txt));
+      } else { alert('TTS not supported on this browser'); }
+    });
+
+    async function getJSON(url){ const r = await fetch(url); return await r.json(); }
+
+    // Calculators
+    function seedCalc(){
+      const w = parseFloat(document.getElementById("thousand").value||0);
+      const rs = parseFloat(document.getElementById("rowsp").value||0);
+      const ps = parseFloat(document.getElementById("plantsp").value||0);
+      const g = parseFloat(document.getElementById("germ").value||0);
+      if(w>0 && rs>0 && ps>0 && g>0){
+        const plants_m2 = 10000/(rs*ps);
+        const kg_ha = (w * plants_m2)/(g/100)/1000;
+        document.getElementById("seed_out").textContent = kg_ha.toFixed(2)+" kg/ha";
+      } else { document.getElementById("seed_out").textContent = "-"; }
+    }
+    ["thousand","rowsp","plantsp","germ"].forEach(id=>{
+      const el = document.getElementById(id); el && el.addEventListener("input", seedCalc);
+    });
+
+    function fertCalc(){
+      const tn = parseFloat(document.getElementById("tn").value||0);
+      const tp = parseFloat(document.getElementById("tp").value||0);
+      const tk = parseFloat(document.getElementById("tk").value||0);
+      const d = tp/0.46; const m = tk/0.60; const n_from_dap = 0.18*d; const u = Math.max(0, (tn - n_from_dap)/0.46);
+      document.getElementById("fert_out").textContent = (tn||tp||tk) ? `Urea: ${u.toFixed(1)} kg/ha | DAP: ${d.toFixed(1)} kg/ha | MOP: ${m.toFixed(1)} kg/ha` : "-";
+    }
+    ["tn","tp","tk"].forEach(id=>{ const el = document.getElementById(id); el && el.addEventListener("input", fertCalc);});
+
+    function dripCalc(){
+      const p = parseFloat(document.getElementById("plants").value||0);
+      const l = parseFloat(document.getElementById("lph").value||0);
+      const h = parseFloat(document.getElementById("hours").value||0);
+      const out = p*l*h;
+      document.getElementById("drip_out").textContent = out>0? out.toFixed(1)+" L/day" : "-";
+    }
+    ["plants","lph","hours"].forEach(id=>{ const el = document.getElementById(id); el && el.addEventListener("input", dripCalc);});
+
+    function roiCalc(){
+      const cost = parseFloat(document.getElementById("cost").value||0);
+      const inc = parseFloat(document.getElementById("income").value||0);
+      document.getElementById("roi_out").textContent = cost>0 ? (((inc-cost)/cost)*100).toFixed(1)+"%" : "-";
+    }
+    ["cost","income"].forEach(id=>{ const el = document.getElementById(id); el && el.addEventListener("input", roiCalc);});
+
+    // Mandi
+    let priceChart;
+    async function loadMandi(){
+      const qs = new URLSearchParams();
+      const s = document.getElementById("f_state").value.trim();
+      const c = document.getElementById("f_commodity").value.trim();
+      const m = document.getElementById("f_market").value.trim();
+      if(s) qs.set("state", s); if(c) qs.set("commodity", c); if(m) qs.set("market", m);
+      const data = await getJSON("/api/mandi?"+qs.toString());
+      const tbody = document.getElementById("mandi_tbody"); tbody.innerHTML = "";
+      data.forEach(row=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td class='p-2 border'>${row.date}</td>
+          <td class='p-2 border'>${row.state}</td><td class='p-2 border'>${row.market}</td>
+          <td class='p-2 border'>${row.commodity}</td><td class='p-2 border'>${row.variety}</td>
+          <td class='p-2 border'>${row.min}</td><td class='p-2 border'>${row.max}</td>
+          <td class='p-2 border font-semibold'>${row.modal}</td>`;
+        tbody.appendChild(tr);
+      });
+      const labels = data.map(d=>d.date).slice(0,10).reverse();
+      const values = data.map(d=>d.modal).slice(0,10).reverse();
+      const ctx = document.getElementById("priceChart");
+      if(priceChart) priceChart.destroy();
+      priceChart = new Chart(ctx, { type:"line", data:{ labels, datasets:[{ label:"Modal price (₹/qtl)", data: values }] } });
+    }
+    document.getElementById("f_go").addEventListener("click", loadMandi);
+    loadMandi();
+
+    // Weather
+    async function loadWeather(){
+      const city = document.getElementById("city").value;
+      const data = await getJSON("/api/weather?city="+encodeURIComponent(city));
+      const wrap = document.getElementById("w_cards"); wrap.innerHTML="";
+      data.forEach(d=>{
+        const card = document.createElement("div");
+        card.className = "p-4 border rounded-2xl bg-green-50";
+        card.innerHTML = `<div class='font-semibold'>${city} • ${d.date}</div>
+          <div class='text-lg text-slate-700'>${d.desc}</div>
+          <div class='mt-1 text-lg'>Max: ${d.tmax}°C • Min: ${d.tmin}°C • Rain: ${d.rain_mm} mm</div>`;
+        wrap.appendChild(card);
+      });
+    }
+    document.getElementById("w_go").addEventListener("click", loadWeather);
+    loadWeather();
+
+    // Schemes
+    async function loadSchemes(){
+      const data = await getJSON("/api/schemes");
+      const ul = document.getElementById("scheme_list"); ul.innerHTML="";
+      data.forEach(s=>{
+        const li = document.createElement("li");
+        li.innerHTML = `<a class='underline text-green-700' href='${s.link}' target='_blank'>${s.name}</a> — ${s.desc}`;
+        ul.appendChild(li);
+      });
+    }
+    loadSchemes();
+
+    // Trainings
+    async function loadTrainings(){
+      const data = await getJSON("/api/trainings");
+      const ul = document.getElementById("train_list"); ul.innerHTML="";
+      data.forEach(t=>{
+        const li = document.createElement("li");
+        li.className = "card";
+        li.innerHTML = `<b>${t.title}</b> • ${t.type.toUpperCase()} • <a class='underline text-green-700' target='_blank' href='${t.link}'>Open</a>`;
+        ul.appendChild(li);
+      });
+    }
+    loadTrainings();
+
+    // KVK
+    async function loadKVK(){
+      const st = document.getElementById("kvk_state").value.trim();
+      const qs = st ? "?state="+encodeURIComponent(st) : "";
+      const data = await getJSON("/api/kvk"+qs);
+      const ul = document.getElementById("kvk_list"); ul.innerHTML="";
+      data.forEach(k=>{
+        const li = document.createElement("li");
+        li.innerHTML = `<b>${k.name}</b> — ${k.district}, ${k.state} • <a class='underline' target='_blank' href='${k.link}'>Visit</a> • ${k.phone}`;
+        ul.appendChild(li);
+      });
+    }
+    document.getElementById("kvk_go").addEventListener("click", loadKVK);
+    loadKVK();
+
+    // Guides + calendar + knowledge
+    async function loadGuides(){
+      const crop = document.getElementById("g_crop").value.trim();
+      const qs = crop ? "?crop="+encodeURIComponent(crop) : "";
+      const data = await getJSON("/api/crop-guides"+qs);
+      const ul = document.getElementById("g_list"); ul.innerHTML="";
+      data.forEach(g=>{
+        const li = document.createElement("li");
+        li.className="mb-2";
+        li.textContent = `${g.crop} • ${g.stage}: ${g.advice}`;
+        ul.appendChild(li);
+      });
+    }
+    document.getElementById("g_go").addEventListener("click", loadGuides);
+    loadGuides();
+
+    async function loadCalendar(){
+      const data = await getJSON("/api/calendar");
+      const wrap = document.getElementById("cal_cards"); wrap.innerHTML="";
+      data.forEach(c=>{
+        const div = document.createElement("div");
+        div.className = "p-4 border rounded-2xl bg-white";
+        div.innerHTML = `<div class='font-semibold'>${c.season} • ${c.months}</div>
+          <div class='text-lg'>${c.crops.join(', ')}</div>`;
+        wrap.appendChild(div);
+      });
+    }
+    loadCalendar();
+
+    async function loadKnowledge(){
+      const data = await getJSON("/api/knowledge");
+      const soil = document.getElementById("soil_ul");
+      const water = document.getElementById("water_ul");
+      const ipm = document.getElementById("ipm_ul");
+      data.soil.forEach(x=>{ const li=document.createElement('li'); li.textContent=x; soil.appendChild(li); });
+      data.water.forEach(x=>{ const li=document.createElement('li'); li.textContent=x; water.appendChild(li); });
+      data.ipm.forEach(x=>{ const li=document.createElement('li'); li.textContent=x; ipm.appendChild(li); });
+    }
+    loadKnowledge();
+  </script>
+</body>
+</html>
